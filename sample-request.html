@@ -1,0 +1,94 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hwashine Trading - Request a Sample</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav id="mainNav">
+      <div class="logo">
+        <a href="/">Pigment Red 122</a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="product.html">Product Intro</a></li>
+        <li><a href="applications.html">Applications</a></li>
+        <li><a href="tech-support.html">Tech Support</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
+
+  <section id="sample-request">
+    <h2>Request a Sample</h2>
+    <p>Please fill out the form below to request a sample of Pigment Red 122. We'll process your request as quickly as possible.</p>
+
+    <form class="sample-form contact-form" id="contact-form" action="https://formspree.io/f/xblrnwnz" method="POST">
+      <label for="name">Your Name (Recipient Name):</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="_replyto" required>
+
+      <label for="company">Company:</label>
+      <input type="text" id="company" name="company">
+
+      <label for="application">Intended Application:</label>
+      <textarea id="application" name="application" rows="4" placeholder="Please describe your intended use for the pigment." required></textarea>
+
+      <label>
+        <input type="checkbox" id="request_quote" name="request_quote" value="true">
+        I would like to request a quote.
+      </label>
+      <label>
+        <input type="checkbox" id="test_sample" name="test_sample" value="true" checked>
+        I would like to test a sample first.
+      </label>
+
+      <label for="quantity">Sample Quantity (grams):</label>
+      <select id="quantity" name="quantity">
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <small>We typically provide samples between 25-100 grams.</small>
+      
+      <label for="required_quantity">Required Quantity (kg):</label>
+      <input type="number" id="required_quantity" name="required_quantity" min="1">
+      <small>Let us know your approximate required quantity, and we can provide the best pricing.</small>
+
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" required>
+
+      <label for="address">Shipping Address:</label>
+      <textarea id="address" name="address" rows="4" required></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>
+
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="applications.html">Applications</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+    <p>&copy; 2024 Hwashine Trading Co., Ltd. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
