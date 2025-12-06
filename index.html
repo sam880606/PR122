@@ -1,410 +1,381 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pigment Red 122 - High-Performance Organic Pigment Supplier</title>
-  <meta name="description" content="High-quality Pigment Red 122, widely used in plastics, coatings, inks, and more. We offer stable products and excellent technical support.">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Pigment Red 122",
-      "description": "High-quality Pigment Red 122 supplier, providing stable products and excellent technical support.",
-      "url": "http://www.example.com",
-      "logo": "http://www.example.com/images/logo.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+86-123-456-7890",
-        "email": "sales@example.com",
-        "contactType": "Sales"
-      }
-    }
-  </script>
-  <style>
-    /* Style for the user type selection */
-    .user-type-selection {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-      background-color: #f9f9f9;
-    }
-
-    .user-type-buttons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-      flex-direction: column; /* Stack buttons vertically on smaller screens */
-    }
-
-    .user-type-button {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size: 1rem;
-      text-decoration: none;
-      color: white;
-      background-color: #3498db; /* Example color */
-      width: 100%; /* Make buttons full width on smaller screens */
-      text-align: center; /* Center text within buttons */
-    }
-
-    .user-type-button:hover {
-      background-color: #2980b9;
-    }
-
-    /* Adjustments for even smaller screens */
-    @media (max-width: 400px) {
-      .user-type-button {
-        font-size: 0.9rem; /* Further reduce font size on very small screens */
-        padding: 0.5rem 1rem; /* Reduce padding */
-      }
-    }
-    #hero {
-      margin-top: 70px; /* Ensure content doesn't overlap with fixed header */
-      padding: 3rem 1rem;
-      text-align: center;
-      background-color: #f8f9fa; /* Light background for better readability */
-    }
-
-    .hero-content {
-      margin-bottom: 2rem;
-    }
-
-    .hero-content h1 {
-      font-size: 1.75rem; /* Adjust for smaller screens */
-      color: #dc3545; /* Vibrant header color */
-      margin-bottom: 0.5rem; /* Reduced margin */
-    }
-
-    .hero-content p {
-      font-size: 1.1rem; /* Slightly larger, more readable text */
-      color: #555;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background-color: #dc3545; /* Red CTA button */
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-      margin: 0.5rem;
-    }
-
-    .cta-button:hover {
-      background-color: #c82333; /* Darker red on hover */
-    }
-
-    .hero-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px; /* Soften image edges */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    }
-    /* Introduction Section */
-    #introduction {
-      padding: 2rem 1rem;
-      background-color: #fff;
-      border-bottom: 1px solid #eee;
-    }
-
-    #introduction h2 {
-      color: #343a40;
-      margin-bottom: 1rem;
-    }
-
-    #introduction p {
-      color: #666;
-    }
-
-    /* News Section */
-    #news {
-      padding: 2rem 1rem;
-      background-color: #f8f9fa;
-    }
-
-    #news h2 {
-      color: #343a40;
-      margin-bottom: 1rem;
-    }
-
-    .news-articles {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .article {
-      flex: 1 1 300px;
-      background-color: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-
-    .article h4 {
-      color: #3498db;
-      margin-bottom: 0.5rem;
-    }
-
-    .article p {
-      color: #666;
-    }
-
-    .article a {
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .article a:hover {
-      text-decoration: underline;
-    }
-
-    /* Newsletter Section */
-    #newsletter {
-      padding: 2rem 1rem;
-      background-color: #e9ecef;
-      text-align: center;
-    }
-
-    #newsletter h2 {
-      color: #343a40;
-      margin-bottom: 1rem;
-    }
-
-    .newsletter-form {
-      display: flex;
-      flex-direction: column; /* Stack input and button on smaller screens */
-      align-items: center;
-    }
-
-    .newsletter-form input {
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 0.5rem; /* Add space between input and button */
-      width: 100%; /* Make input full width */
-      max-width: 300px; /* Limit input width */
-    }
-
-    .newsletter-form button {
-      background-color: #dc3545;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .newsletter-form button:hover {
-      background-color: #c82333;
-    }
-    .color-display {
-      display: flex;
-      width: 100%;
-      height: 200px;
-      margin-bottom: 1rem;
-    }
-
-    .color-box {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-weight: bold;
-    }
-    /* FAQ Section */
-    #faq {
-      padding: 2rem 1rem;
-      background-color: #f8f9fa;
-    }
-
-    #faq h2 {
-      color: #343a40;
-      margin-bottom: 1rem;
-    }
-
-    #faq details {
-      margin-bottom: 0.5rem;
-      border: 1px solid #ddd;
-      padding: 0.5rem;
-      border-radius: 4px;
-      background-color: #fff;
-    }
-
-    #faq summary {
-      cursor: pointer;
-      font-weight: bold;
-      color: #333;
-    }
-
-    #faq p {
-      color: #666;
-      padding-top: 0.5rem;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <nav id="mainNav">
-      <div class="logo">
-        <a href="/">Pigment Red 122</a>
-      </div>
-      <ul class="nav-menu">
-        <li><a href="product.html">Product Intro</a></li>
-        <li><a href="applications.html">Applications</a></li>
-        <li><a href="tech-support.html">Tech Support</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-      </ul>
-      <div class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-    </nav>
-  </header>
-
-  <section id="hero">
-    <div class="hero-content">
-      <h1 style="font-size: 1.5rem;">Pigment Red 122 – The Ideal High-Performance Red Pigment for Various Applications</h1>
-      <div class="hero-image">
-        <img id="hero-image" src="/resized_image_1.png" alt="Rose Gold Sedan" style="max-width: 50%; height: auto;">
-        <p style="font-size: 0.7rem; color: #777; margin-top: 0.2rem;">AI-generated image - AI simplifies design</p>
-      </div>
-      <p>Pigment Red 122 (also known as PR122) is a high-performance Quinacridone Red Pigment valued for its brilliant color, excellent lightfastness, and superior chemical stability. As a sought-after organic red pigment, PR122 is widely used across multiple industries, including coatings, inks, and plastics, making it a top choice for manufacturers worldwide.</p>
-      <p>As Hwashine Trading, a dedicated trader specializing in Pigment Red 122, we source our product from China, benefiting from robust supply chains, ensuring consistent quality and availability, addressing the instability sometimes seen with other organic pigment suppliers.</p>
-      <p><strong>In 2025, prioritize risk reduction and cost efficiency with our Pigment Red 122. Benefit from stable supply, consistent quality, and competitive pricing, ensuring reliable color performance while optimizing your production costs.</strong></p>
-      <a href="contact-us.html" class="cta-button">Inquire Now</a>
-      <a href="sample-request.html" class="cta-button">Request a Sample</a>
-    </div>
-    <div class="hero-image">
-      <div class="color-display">
-        <div class="color-box" style="background-color: #5B0011;">Deep Shade</div>
-        <div class="color-box" style="background-color: #E88FD3;">Tint Shade</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- User Type Selection Section -->
-  <section class="user-type-selection">
-    <h2>Are you familiar with Pigment Red 122?</h2>
-    <div class="user-type-buttons">
-      <a href="product.html" class="user-type-button">Yes, take me to Products</a>
-      <a href="applications.html" class="user-type-button">No, I want to see Applications</a>
-    </div>
-  </section>
-
-  <section id="introduction">
-    <h2>Key Features of Pigment Red 122</h2>
-    <p>Exceptional Lightfastness: PR122 offers outstanding resistance to light and weathering, making it ideal for outdoor applications such as automotive and industrial coatings.</p>
-    <p>High Tinting Strength: This high-performance red pigment provides intense and vibrant color in various substrates, including plastics, inks, and coatings.</p>
-    <p>Superior Chemical Stability: PR122 maintains its stability under high temperatures and harsh chemical conditions, perfect for high-temperature plastic processing.</p>
-    <p>Versatile Applications: As a leading Quinacridone Pigment, Pigment Red 122 is suitable for use in inks, plastics, paints, textiles, and more.</p>
-    <p><b>Origin:</b> Our Pigment Red 122 is sourced from reliable manufacturing facilities in China, ensuring a stable and abundant supply. As Hwashine Trading, a dedicated trader specializing in Pigment Red 122, we guarantee high-quality products.</p>
-  </section>
-
-  <section id="faq">
-    <h2>Applications of Pigment Red 122 - FAQs</h2>
-    <details>
-      <summary>1. What are the main uses of Pigment Red 122?</summary>
-      <p>Pigment Red 122 is a vibrant blue-shade red pigment widely used in:
-        <ul>
-          <li>Artist paints (oil, acrylic, watercolor, colored pencils, etc.)</li>
-          <li>Plastics (such as PP, PE, PVC, etc.)</li>
-          <li>Coatings (automotive paints, high-end industrial coatings, etc.)</li>
-          <li>Printing inks (offset, inkjet, UV inks, etc.)</li>
-        </ul>
-      </p>
-    </details>
-    <details>
-      <summary>2. Can Pigment Red 122 be added in small amounts?</summary>
-      <p>Yes. PR122 has high tinting strength, and even small additions can affect the final hue, so it is often used to blend various red, purple, or pink colors.</p>
-    </details>
-    <details>
-      <summary>3. How does Pigment Red 122 perform at low concentrations?</summary>
-      <p>At low concentrations, PR122 still has good color saturation and does not easily turn white or darken. Its high transparency allows it to exhibit excellent layering in water-based color applications (such as watercolor or transparent inks).</p>
-    </details>
-    <details>
-      <summary>4. What is the price range of Pigment Red 122?</summary>
-      <p>PR122 is a cost-effective choice in applications that require vividness and durability. Compared to other high lightfastness organic pigments (such as some alizarin or quinacridone pigments), PR122 offers excellent light and weather resistance while maintaining reasonable costs.</p>
-    </details>
-    <details>
-      <summary>5. Why is Pigment Red 122 called Quinacridone Red?</summary>
-      <p>The chemical structure of PR122 belongs to the Quinacridone class of compounds. Its core molecular structure contains a conjugated double bond system, which gives it high stability, high lightfastness, and high transparency, so PR122 is named Quinacridone Red.</p>
-    </details>
-    <details>
-      <summary>6. How safe is Pigment Red 122?</summary>
-      <p>PR122 almost meets the requirements of most regulations for pigments, usually does not contain heavy metals, and complies with EU REACH regulations, US ASTM D-4236 (non-toxic certification), etc. For more detailed regulatory compliance information, please contact us to obtain real-time declarations or test reports.</p>
-    </details>
-  </section>
-
-  <section id="newsletter">
-    <h2>Hwashine Trading—Your Global Color Partner</h2>
-    <p>Hwashine Trading, headquartered in Taipei 101, Taiwan, is a professional supplier specializing in organic pigments. We are committed to providing high-quality, stable, and competitive pigment solutions to the global market. Our products are widely used in industries such as inks, coatings, plastics, and textiles. Our expert team is well-versed in international trade practices and possesses strong technical backgrounds, enabling us to offer the most suitable product selections and technical support.</p>
-    <p><b>The Professional's Choice: Pigment Red 122</b></p>
-    <p>As a high-performance Quinacridone pigment, Pigment Red 122 stands out with its vivid blue-shade red, excellent lightfastness, weather resistance, and chemical resistance, making it the preferred choice for high-end applications. With in-depth research and years of market experience in Pigment Red 122, we offer solutions with optimal dispersibility, particle size control, and color stability tailored to various application scenarios.</p>
-    <p><b>Hwashine Trading's Professional Advantages in Pigment Red 122</b></p>
-    <p>✅ Selected Raw Materials: Rigorous screening of high-purity Quinacridone base materials to ensure product stability</p>
-    <p>✅ Optimized Dispersion Technology: Enhancing pigment dispersion in different media to ensure color uniformity</p>
-    <p>✅ High-Standard Testing: Strict testing for solvent resistance, lightfastness, and heat resistance, complying with global market standards</p>
-    <p>✅ Application Technology Support: Adjusting product characteristics based on customer needs to ensure optimal application results</p>
-    <p><b>Taiwan: A Global Trade Hub, the Best Platform for Selling Chinese Goods</b></p>
-    <p>Taiwan, as an international trade center in the Asia-Pacific region, boasts a convenient logistics system, a professional trade environment, and a stable regulatory framework, making it the best springboard for Chinese goods to enter the global market. Hwashine Trading, leveraging Taiwan's geographical and trade advantages, can flexibly connect with buyers from various countries, ensuring rapid supply and providing high-quality service.</p>
-    <p>We are not just a pigment supplier; we are a long-term partner dedicated to creating value for our customers.</p>
-
-  </section>
-
-  <footer>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="product.html">Products</a></li>
-        <li><a href="applications.html">Applications</a></li>
-        <li><a href="contact-us.html">Contact</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-      </ul>
-    </nav>
-    <p>&copy; 2024 Hwashine Trading Co., Ltd. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const nav = document.getElementById('mainNav');
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-          nav.classList.add('sticky');
-        } else {
-          nav.classList.remove('sticky');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔力學堂輔助工具 | Magic Campus Toolkit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 自定義 PoE 風格配色與特效 - 保留視覺風格，修改用語 */
+        :root {
+            --bg-dark: #0e0f12;
+            --bg-panel: #181a21;
+            --border-std: #2d313a;
+            --text-gold: #dfcf99;
+            --text-unique: #af6025;
+            --text-magic: #8888ff;
+            --text-gem: #1ba29b;
+            --text-grey: #a3a3a3;
         }
-      });
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-grey);
+            font-family: 'Noto Sans TC', sans-serif;
+        }
 
-      // Image rotator
-      const images = [
-        '/resized_image_1.png',
-        '/resized_image_2.png',
-        '/resized_image_3.png'
-      ];
-      let currentImageIndex = 0;
-      const heroImage = document.getElementById('hero-image');
+        h1, h2, h3, .poe-header {
+            font-family: 'Cinzel', serif;
+        }
 
-      function rotateImages() {
-        heroImage.src = images[currentImageIndex];
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-      }
+        .poe-panel {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-std);
+        }
 
-      setInterval(rotateImages, 3000); // Change image every 3 seconds
-    });
-  </script>
+        .poe-unique-box {
+            border: 1px solid var(--text-unique);
+            box-shadow: inset 0 0 20px rgba(175, 96, 37, 0.1);
+            position: relative;
+        }
+        
+        .poe-unique-header {
+            background: linear-gradient(90deg, transparent, rgba(175, 96, 37, 0.2), transparent);
+        }
+
+        .poe-gem-box {
+            border: 1px solid var(--text-gem);
+            box-shadow: inset 0 0 20px rgba(27, 162, 155, 0.1);
+        }
+
+        .nav-item.active {
+            background-color: #23262e;
+            border-left: 3px solid var(--text-gold);
+            color: var(--text-gold);
+        }
+        
+        .nav-item {
+            border-left: 3px solid transparent;
+        }
+
+        /* 滾動條樣式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row min-h-screen overflow-hidden">
+
+    <!-- 左側導航欄 -->
+    <nav class="w-full md:w-72 bg-[#121317] border-r border-[#2d313a] flex flex-col z-10 flex-shrink-0">
+        <div class="p-6 border-b border-[#2d313a] flex items-center gap-3">
+            <div class="w-10 h-10 border border-[#dfcf99] flex items-center justify-center bg-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#dfcf99]" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div>
+                <h1 class="text-[#dfcf99] text-xl font-bold tracking-wider">TOOLKIT</h1>
+                <div class="text-[10px] text-[#555] uppercase tracking-[0.2em]">Magic Campus Tools</div>
+            </div>
+        </div>
+        
+        <div class="flex-1 py-4 overflow-y-auto">
+            <button onclick="switchTab('home')" id="nav-home" class="nav-item active w-full group flex items-center space-x-3 px-6 py-4 transition-all duration-200 text-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                <div>
+                    <div class="font-serif tracking-wide text-sm font-bold">工具箱首頁</div>
+                    <div class="text-[10px] uppercase tracking-wider opacity-60">Home</div>
+                </div>
+            </button>
+            
+            <button onclick="switchTab('flash')" id="nav-flash" class="nav-item w-full group flex items-center space-x-3 px-6 py-4 transition-all duration-200 text-left text-[#7f7f7f] hover:bg-[#1c1e26] hover:text-[#c8c8c8]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <div>
+                    <div class="font-serif tracking-wide text-sm font-bold">遊戲啟動方案</div>
+                    <div class="text-[10px] uppercase tracking-wider opacity-60">Flash Runtime</div>
+                </div>
+            </button>
+            
+            <button onclick="switchTab('multi')" id="nav-multi" class="nav-item w-full group flex items-center space-x-3 px-6 py-4 transition-all duration-200 text-left text-[#7f7f7f] hover:bg-[#1c1e26] hover:text-[#c8c8c8]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                <div>
+                    <div class="font-serif tracking-wide text-sm font-bold">多開同步工具</div>
+                    <div class="text-[10px] uppercase tracking-wider opacity-60">Multiboxing</div>
+                </div>
+            </button>
+        </div>
+
+        <div class="p-6 border-t border-[#2d313a] bg-[#0e0f12]">
+            <div class="text-[10px] text-[#555] text-center font-mono">
+                Version 3.22.1<br>
+                Made for Magic Campus
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要內容區 -->
+    <main class="flex-1 overflow-y-auto bg-[#0e0f12] relative">
+        <!-- 背景裝飾 -->
+        <div class="absolute inset-0 pointer-events-none opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"></div>
+
+        <div class="max-w-5xl mx-auto p-6 md:p-12 relative z-0">
+            
+            <!-- HOME SECTION -->
+            <div id="section-home" class="space-y-8 animate-fade-in block">
+                <div class="border-b border-[#2d313a] pb-6">
+                    <h1 class="text-4xl text-[#dfcf99] mb-2 tracking-wider">魔力學堂：輔助工具箱</h1>
+                    <p class="text-[#7f7f7f] text-sm uppercase tracking-[0.2em]">Unofficial Toolkit</p>
+                </div>
+
+                <div class="poe-panel p-1">
+                    <div class="bg-[#0e0f12] p-6 border border-[#2d313a] relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 text-[#dfcf99]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        </div>
+                        <h2 class="text-xl text-[#dfcf99] mb-4 font-bold border-b border-[#2d313a] pb-2 inline-block">
+                            使用說明 (Instructions)
+                        </h2>
+                        <div class="space-y-4 text-[#a3a3a3] text-sm leading-relaxed font-serif">
+                            <p>
+                                <span class="text-[#af6025] font-bold">[學員注意]</span> 隨著 Adobe Flash Player 於 2021 年停止支援，通往 <span class="text-[#dfcf99]">無憂大陸</span> 的連接已變得困難。
+                            </p>
+                            <p>
+                                本工具箱收錄了修復遊戲運行的必備檔案（Flash 整合包）以及提升遊玩效率的輔助軟體（多開器）。所有連結之檔案均經過初步掃描，但仍建議各位學員在執行前開啟防毒軟體。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Link Card 1 -->
+                    <div onclick="switchTab('flash')" class="poe-panel p-4 cursor-pointer hover:border-[#dfcf99] transition-colors group">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-[#0e0f12] p-3 border border-[#2d313a]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#8888ff]" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-[#dfcf99] font-bold text-lg group-hover:text-white mb-1">遊戲啟動方案</h3>
+                                <div class="text-[#7f7f7f] text-xs uppercase mb-2">Runtime Environment</div>
+                                <p class="text-[#a3a3a3] text-sm">
+                                    下載 <span class="text-[#af6025]">推薦工具：站長整合包</span>。解決無法載入遊戲、黑屏等問題。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Link Card 2 -->
+                    <div onclick="switchTab('multi')" class="poe-panel p-4 cursor-pointer hover:border-[#dfcf99] transition-colors group">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-[#0e0f12] p-3 border border-[#2d313a]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#1ba29b]" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-[#dfcf99] font-bold text-lg group-hover:text-white mb-1">多開同步工具</h3>
+                                <div class="text-[#7f7f7f] text-xs uppercase mb-2">Multiboxing</div>
+                                <p class="text-[#a3a3a3] text-sm">
+                                    配置 <span class="text-[#1ba29b]">開源工具：OpenMultiboxing</span>。實現多視窗同步與自動化排列。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FLASH SECTION -->
+            <div id="section-flash" class="space-y-8 animate-fade-in hidden">
+                <div class="flex items-center justify-between border-b border-[#2d313a] pb-4">
+                    <h2 class="text-2xl text-[#dfcf99] flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-[#8888ff]" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        遊戲啟動方案
+                    </h2>
+                    <span class="text-[#555] text-xs font-mono">Ver 32.0.0.465</span>
+                </div>
+
+                <!-- Unique Item Box: Download -->
+                <div class="poe-unique-box bg-[#0e0f12] p-1">
+                    <div class="bg-[#0e0f12] p-6 relative">
+                        <!-- Header Glow -->
+                        <div class="absolute top-0 left-0 w-full h-16 poe-unique-header opacity-50 pointer-events-none"></div>
+                        
+                        <div class="flex flex-col md:flex-row justify-between items-start mb-6 relative z-10">
+                            <div>
+                                <h3 class="text-[#af6025] text-2xl font-bold font-serif">站長整合包 (Station Master's Pack)</h3>
+                                <p class="text-[#7f7f7f] text-sm mt-1 font-mono">推薦必備工具 (Recommended)</p>
+                            </div>
+                            <a href="#" onclick="alert('請將您的檔案連結貼在此處的 href 屬性中')" class="mt-4 md:mt-0 bg-[#af6025] hover:bg-[#c97435] text-black font-bold px-6 py-2 text-sm flex items-center gap-2 transition-colors uppercase tracking-widest clip-path-polygon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                獲取檔案
+                            </a>
+                        </div>
+
+                        <!-- Stats Section -->
+                        <div class="grid gap-2 text-sm border-t border-b border-[#af6025] border-opacity-30 py-4 my-4 font-serif">
+                            <div class="flex justify-between items-center px-2 hover:bg-[#1c1e26]">
+                                <span class="text-[#7f7f7f]">檔案類型</span>
+                                <span class="text-[#c8c8c8]">可執行檔 (.exe)</span>
+                            </div>
+                            <div class="flex justify-between items-center px-2 hover:bg-[#1c1e26]">
+                                <span class="text-[#7f7f7f]">推薦度</span>
+                                <span class="text-[#8888ff]">★★★★★ (已最佳化)</span>
+                            </div>
+                            <div class="flex justify-between items-center px-2 hover:bg-[#1c1e26]">
+                                <span class="text-[#7f7f7f]">適用版本</span>
+                                <span class="text-[#c8c8c8]">Windows 10 / 11</span>
+                            </div>
+                        </div>
+
+                        <!-- Explicit Mods -->
+                        <div class="space-y-2 text-[#8888ff] text-sm font-serif px-2">
+                            <p>內含 Flash Player Projector 獨立核心</p>
+                            <p>此版本已移除 <span class="text-white">瀏覽器相關檢測</span> 限制</p>
+                            <p>此版本已修復 <span class="text-white">Adobe EOL (停止支援)</span> 問題</p>
+                            <p class="text-[#a3a3a3] italic mt-4">使用說明：下載後解壓縮，執行 StartGame.exe 即可直接連結至無憂大陸。</p>
+                        </div>
+                        
+                        <div class="mt-6 pt-4 border-t border-[#2d313a] italic text-[#af6025] text-xs text-center font-serif opacity-70">
+                            "古老的技術並未消逝，只是需要正確的鑰匙來開啟。" <br>— 資深學長
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alternatives Table -->
+                <div class="poe-panel p-4 mt-8">
+                    <h3 class="text-[#c8c8c8] font-bold mb-4 border-l-4 border-[#8888ff] pl-3">替代方案列表 (Alternative Solutions)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left border-collapse">
+                            <thead class="text-[#7f7f7f] bg-[#0e0f12] uppercase font-mono text-xs border-b border-[#2d313a]">
+                                <tr>
+                                    <th class="px-4 py-3">工具名稱</th>
+                                    <th class="px-4 py-3">類型</th>
+                                    <th class="px-4 py-3">特色</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#2d313a]">
+                                <tr class="bg-[#181a21] hover:bg-[#1c1e26]">
+                                    <td class="px-4 py-3 text-[#dfcf99] font-bold">Flash Center</td>
+                                    <td class="px-4 py-3 text-[#a3a3a3]">瀏覽器插件</td>
+                                    <td class="px-4 py-3"><span class="text-[#d84a4a]">廣告出現率增加 (20-50%)</span></td>
+                                </tr>
+                                <tr class="bg-[#181a21] hover:bg-[#1c1e26]">
+                                    <td class="px-4 py-3 text-[#dfcf99] font-bold">Cent Browser 4.3</td>
+                                    <td class="px-4 py-3 text-[#a3a3a3]">舊版核心</td>
+                                    <td class="px-4 py-3"><span class="text-[#8888ff]">純淨度高，無廣告</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MULTI SECTION -->
+            <div id="section-multi" class="space-y-8 animate-fade-in hidden">
+                <div class="flex items-center justify-between border-b border-[#2d313a] pb-4">
+                    <h2 class="text-2xl text-[#dfcf99] flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-[#1ba29b]" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                        多開同步工具
+                    </h2>
+                    <a href="https://github.com/OpenMultiboxing/OpenMultiboxing" target="_blank" class="text-[#555] hover:text-[#c8c8c8] text-xs flex items-center gap-1 font-mono">
+                        GITHUB SOURCE <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- Main Gem: OpenMultiboxing -->
+                    <div class="poe-gem-box bg-[#0e0f12] p-6 relative">
+                        <!-- Gem Header -->
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="bg-[#1ba29b]/10 p-3 rounded border border-[#1ba29b] shadow-[0_0_15px_rgba(27,162,155,0.3)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#1ba29b]" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-[#1ba29b] font-bold text-xl font-serif">OpenMultiboxing</h3>
+                                <div class="text-[#7f7f7f] text-xs uppercase font-mono mt-1">多開主程式 (Main Program)</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-sm text-[#a3a3a3] font-serif leading-relaxed">
+                            <p>
+                                <span class="text-[#1ba29b]">OpenMultiboxing</span> 是一個開源的視窗管理工具，允許使用者定義複雜的視窗佈局，並透過廣播機制同步輸入指令。這款工具專為需要同時操作多個角色的玩家設計。
+                            </p>
+                            
+                            <div class="poe-panel bg-[#121317] p-4 my-4">
+                                <h4 class="text-[#c8c8c8] text-xs font-bold mb-3 uppercase tracking-widest border-b border-[#2d313a] pb-1">功能說明 (Features)</h4>
+                                <ul class="space-y-2 list-none">
+                                    <li class="text-[#8888ff] flex items-center gap-2">
+                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full"></span>
+                                        視窗自動吸附與排列 (Window Layout) - 設定一次，下次開啟自動歸位
+                                    </li>
+                                    <li class="text-[#8888ff] flex items-center gap-2">
+                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full"></span>
+                                        支援全域按鍵廣播 (Key Broadcasting) - 一鍵操控所有角色
+                                    </li>
+                                    <li class="text-[#8888ff] flex items-center gap-2">
+                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full"></span>
+                                        畫中畫預覽模式 (PiP Preview) - 即時監控後台視窗
+                                    </li>
+                                    <li class="text-[#8888ff] flex items-center gap-2">
+                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full"></span>
+                                        FPS 限制與資源優化 - 降低多開時的電腦負擔
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="https://github.com/OpenMultiboxing/OpenMultiboxing/releases" target="_blank" class="inline-flex items-center gap-2 text-[#0e0f12] bg-[#1ba29b] border border-[#1ba29b] px-6 py-2 hover:bg-[#2bc4bc] transition-colors font-bold text-xs uppercase tracking-widest">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    下載源代碼 (GitHub)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function switchTab(tabId) {
+            // Hide all sections
+            document.getElementById('section-home').classList.add('hidden');
+            document.getElementById('section-flash').classList.add('hidden');
+            document.getElementById('section-multi').classList.add('hidden');
+
+            // Show selected section
+            document.getElementById('section-' + tabId).classList.remove('hidden');
+
+            // Reset all nav items
+            document.querySelectorAll('.nav-item').forEach(el => {
+                el.classList.remove('active');
+                el.classList.remove('bg-[#23262e]');
+                el.classList.remove('text-[#dfcf99]');
+                el.classList.add('text-[#7f7f7f]');
+                el.classList.add('hover:text-[#c8c8c8]');
+                // Reset SVG color
+                const svg = el.querySelector('svg');
+                if(svg) svg.classList.remove('text-[#dfcf99]');
+            });
+
+            // Activate selected nav item
+            const activeNav = document.getElementById('nav-' + tabId);
+            activeNav.classList.add('active');
+            activeNav.classList.remove('text-[#7f7f7f]');
+            activeNav.classList.remove('hover:text-[#c8c8c8]');
+            
+            // Set SVG color
+            const activeSvg = activeNav.querySelector('svg');
+            if(activeSvg) activeSvg.classList.add('text-[#dfcf99]');
+        }
+    </script>
 </body>
 </html>
