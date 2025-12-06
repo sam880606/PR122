@@ -60,7 +60,7 @@
             border-left: 3px solid transparent;
         }
 
-        /* 電腦版滾動條樣式 */
+        /* 滾動條樣式 */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -76,12 +76,12 @@
         }
     </style>
 </head>
-<!-- 修正：只在電腦版 (md:) 開啟 overflow-hidden，手機版允許自然捲動 -->
-<body class="flex flex-col md:flex-row min-h-screen md:overflow-hidden bg-[#0e0f12]">
+<!-- 修正：移除 overflow-hidden，允許整個網頁自然捲動 -->
+<body class="flex flex-col md:flex-row min-h-screen bg-[#0e0f12]">
 
-    <!-- 左側導航欄 (手機版為頂部選單) -->
-    <!-- 修正：手機版 w-full，高度自適應；電腦版固定寬度 -->
-    <nav class="w-full md:w-72 bg-[#121317] border-b md:border-b-0 md:border-r border-[#2d313a] flex flex-col z-20 flex-shrink-0 sticky top-0 md:relative shadow-lg md:shadow-none">
+    <!-- 左側導航欄 -->
+    <!-- 修正：電腦版加入 sticky top-0 h-screen，讓選單在捲動時固定在左側 -->
+    <nav class="w-full md:w-72 bg-[#121317] border-b md:border-b-0 md:border-r border-[#2d313a] flex flex-col z-20 flex-shrink-0 sticky top-0 md:h-screen shadow-lg md:shadow-none">
         <div class="p-4 md:p-6 border-b border-[#2d313a] flex items-center gap-3 bg-[#121317]">
             <div class="w-8 h-8 md:w-10 md:h-10 border border-[#dfcf99] flex items-center justify-center bg-black flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-[#dfcf99]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
@@ -90,12 +90,9 @@
                 <h1 class="text-[#dfcf99] text-lg md:text-xl font-bold tracking-wider leading-tight">TOOLKIT</h1>
                 <div class="text-[10px] text-[#555] uppercase tracking-[0.2em]">Magic Campus</div>
             </div>
-            
-            <!-- 手機版選單切換按鈕 (這裡我們簡單化，直接做成橫向捲動或簡易列表) -->
         </div>
         
         <!-- 選單項目區域 -->
-        <!-- 修正：手機版改為橫向排列或更緊湊的列表，這裡採用緊湊列表 -->
         <div class="flex-1 overflow-x-auto md:overflow-y-auto flex md:flex-col bg-[#121317] no-scrollbar">
             <button onclick="switchTab('home')" id="nav-home" class="nav-item active flex-1 md:flex-none md:w-full group flex items-center justify-center md:justify-start space-x-2 md:space-x-3 px-4 py-3 md:px-6 md:py-4 transition-all duration-200 text-left whitespace-nowrap border-b-2 md:border-b-0 md:border-l-3 border-[#dfcf99] md:border-transparent">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
@@ -131,8 +128,8 @@
     </nav>
 
     <!-- 主要內容區 -->
-    <!-- 修正：手機版移除 overflow-y-auto，改用預設捲動；padding 縮小為 p-4 -->
-    <main class="flex-1 md:overflow-y-auto bg-[#0e0f12] relative min-h-screen">
+    <!-- 修正：移除 overflow-y-auto，改用自然高度 -->
+    <main class="flex-1 bg-[#0e0f12] relative min-h-screen">
         <!-- 背景裝飾 -->
         <div class="fixed md:absolute inset-0 pointer-events-none opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"></div>
 
