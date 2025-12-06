@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>魔力學堂輔助工具 | Magic Campus Toolkit</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
             background-color: var(--bg-dark);
             color: var(--text-grey);
             font-family: 'Noto Sans TC', sans-serif;
+            -webkit-overflow-scrolling: touch; /* 讓 iOS 捲動更順暢 */
         }
 
         h1, h2, h3, .poe-header {
@@ -59,7 +60,7 @@
             border-left: 3px solid transparent;
         }
 
-        /* 滾動條樣式 */
+        /* 電腦版滾動條樣式 */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -75,47 +76,53 @@
         }
     </style>
 </head>
-<body class="flex flex-col md:flex-row min-h-screen overflow-hidden">
+<!-- 修正：只在電腦版 (md:) 開啟 overflow-hidden，手機版允許自然捲動 -->
+<body class="flex flex-col md:flex-row min-h-screen md:overflow-hidden bg-[#0e0f12]">
 
-    <!-- 左側導航欄 -->
-    <nav class="w-full md:w-72 bg-[#121317] border-r border-[#2d313a] flex flex-col z-10 flex-shrink-0">
-        <div class="p-6 border-b border-[#2d313a] flex items-center gap-3">
-            <div class="w-10 h-10 border border-[#dfcf99] flex items-center justify-center bg-black">
-                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#dfcf99]" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <!-- 左側導航欄 (手機版為頂部選單) -->
+    <!-- 修正：手機版 w-full，高度自適應；電腦版固定寬度 -->
+    <nav class="w-full md:w-72 bg-[#121317] border-b md:border-b-0 md:border-r border-[#2d313a] flex flex-col z-20 flex-shrink-0 sticky top-0 md:relative shadow-lg md:shadow-none">
+        <div class="p-4 md:p-6 border-b border-[#2d313a] flex items-center gap-3 bg-[#121317]">
+            <div class="w-8 h-8 md:w-10 md:h-10 border border-[#dfcf99] flex items-center justify-center bg-black flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#dfcf99]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             </div>
             <div>
-                <h1 class="text-[#dfcf99] text-xl font-bold tracking-wider">TOOLKIT</h1>
-                <div class="text-[10px] text-[#555] uppercase tracking-[0.2em]">Magic Campus Tools</div>
+                <h1 class="text-[#dfcf99] text-lg md:text-xl font-bold tracking-wider leading-tight">TOOLKIT</h1>
+                <div class="text-[10px] text-[#555] uppercase tracking-[0.2em]">Magic Campus</div>
             </div>
+            
+            <!-- 手機版選單切換按鈕 (這裡我們簡單化，直接做成橫向捲動或簡易列表) -->
         </div>
         
-        <div class="flex-1 py-4 overflow-y-auto">
-            <button onclick="switchTab('home')" id="nav-home" class="nav-item active w-full group flex items-center space-x-3 px-6 py-4 transition-all duration-200 text-left">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        <!-- 選單項目區域 -->
+        <!-- 修正：手機版改為橫向排列或更緊湊的列表，這裡採用緊湊列表 -->
+        <div class="flex-1 overflow-x-auto md:overflow-y-auto flex md:flex-col bg-[#121317] no-scrollbar">
+            <button onclick="switchTab('home')" id="nav-home" class="nav-item active flex-1 md:flex-none md:w-full group flex items-center justify-center md:justify-start space-x-2 md:space-x-3 px-4 py-3 md:px-6 md:py-4 transition-all duration-200 text-left whitespace-nowrap border-b-2 md:border-b-0 md:border-l-3 border-[#dfcf99] md:border-transparent">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                 <div>
-                    <div class="font-serif tracking-wide text-sm font-bold">工具箱首頁</div>
-                    <div class="text-[10px] uppercase tracking-wider opacity-60">Home</div>
+                    <div class="font-serif tracking-wide text-sm font-bold">首頁</div>
+                    <div class="text-[10px] uppercase tracking-wider opacity-60 hidden md:block">Home</div>
                 </div>
             </button>
             
-            <button onclick="switchTab('flash')" id="nav-flash" class="nav-item w-full group flex items-center space-x-3 px-6 py-4 transition-all duration-200 text-left text-[#7f7f7f] hover:bg-[#1c1e26] hover:text-[#c8c8c8]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <button onclick="switchTab('flash')" id="nav-flash" class="nav-item flex-1 md:flex-none md:w-full group flex items-center justify-center md:justify-start space-x-2 md:space-x-3 px-4 py-3 md:px-6 md:py-4 transition-all duration-200 text-left whitespace-nowrap text-[#7f7f7f] hover:bg-[#1c1e26] hover:text-[#c8c8c8] border-b-2 md:border-b-0 border-transparent">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 <div>
-                    <div class="font-serif tracking-wide text-sm font-bold">遊戲啟動方案</div>
-                    <div class="text-[10px] uppercase tracking-wider opacity-60">Flash Runtime</div>
+                    <div class="font-serif tracking-wide text-sm font-bold">啟動方案</div>
+                    <div class="text-[10px] uppercase tracking-wider opacity-60 hidden md:block">Runtime</div>
                 </div>
             </button>
             
-            <button onclick="switchTab('multi')" id="nav-multi" class="nav-item w-full group flex items-center space-x-3 px-6 py-4 transition-all duration-200 text-left text-[#7f7f7f] hover:bg-[#1c1e26] hover:text-[#c8c8c8]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            <button onclick="switchTab('multi')" id="nav-multi" class="nav-item flex-1 md:flex-none md:w-full group flex items-center justify-center md:justify-start space-x-2 md:space-x-3 px-4 py-3 md:px-6 md:py-4 transition-all duration-200 text-left whitespace-nowrap text-[#7f7f7f] hover:bg-[#1c1e26] hover:text-[#c8c8c8] border-b-2 md:border-b-0 border-transparent">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
                 <div>
-                    <div class="font-serif tracking-wide text-sm font-bold">多開同步工具</div>
-                    <div class="text-[10px] uppercase tracking-wider opacity-60">Multiboxing</div>
+                    <div class="font-serif tracking-wide text-sm font-bold">多開工具</div>
+                    <div class="text-[10px] uppercase tracking-wider opacity-60 hidden md:block">Multiboxing</div>
                 </div>
             </button>
         </div>
 
-        <div class="p-6 border-t border-[#2d313a] bg-[#0e0f12]">
+        <div class="hidden md:block p-6 border-t border-[#2d313a] bg-[#0e0f12]">
             <div class="text-[10px] text-[#555] text-center font-mono">
                 Version 3.22.1<br>
                 Made for Magic Campus
@@ -124,25 +131,26 @@
     </nav>
 
     <!-- 主要內容區 -->
-    <main class="flex-1 overflow-y-auto bg-[#0e0f12] relative">
+    <!-- 修正：手機版移除 overflow-y-auto，改用預設捲動；padding 縮小為 p-4 -->
+    <main class="flex-1 md:overflow-y-auto bg-[#0e0f12] relative min-h-screen">
         <!-- 背景裝飾 -->
-        <div class="absolute inset-0 pointer-events-none opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"></div>
+        <div class="fixed md:absolute inset-0 pointer-events-none opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"></div>
 
-        <div class="max-w-5xl mx-auto p-6 md:p-12 relative z-0">
+        <div class="max-w-5xl mx-auto p-4 md:p-12 relative z-0 pb-20 md:pb-12">
             
             <!-- HOME SECTION -->
-            <div id="section-home" class="space-y-8 animate-fade-in block">
-                <div class="border-b border-[#2d313a] pb-6">
-                    <h1 class="text-4xl text-[#dfcf99] mb-2 tracking-wider">魔力學堂：輔助工具箱</h1>
-                    <p class="text-[#7f7f7f] text-sm uppercase tracking-[0.2em]">Unofficial Toolkit</p>
+            <div id="section-home" class="space-y-6 md:space-y-8 animate-fade-in block">
+                <div class="border-b border-[#2d313a] pb-4 md:pb-6">
+                    <h1 class="text-2xl md:text-4xl text-[#dfcf99] mb-2 tracking-wider">魔力學堂：輔助工具箱</h1>
+                    <p class="text-[#7f7f7f] text-xs md:text-sm uppercase tracking-[0.2em]">Unofficial Toolkit</p>
                 </div>
 
                 <div class="poe-panel p-1">
-                    <div class="bg-[#0e0f12] p-6 border border-[#2d313a] relative overflow-hidden">
+                    <div class="bg-[#0e0f12] p-4 md:p-6 border border-[#2d313a] relative overflow-hidden">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-[#dfcf99]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                         </div>
-                        <h2 class="text-xl text-[#dfcf99] mb-4 font-bold border-b border-[#2d313a] pb-2 inline-block">
+                        <h2 class="text-lg md:text-xl text-[#dfcf99] mb-4 font-bold border-b border-[#2d313a] pb-2 inline-block">
                             使用說明 (Instructions)
                         </h2>
                         <div class="space-y-4 text-[#a3a3a3] text-sm leading-relaxed font-serif">
@@ -156,28 +164,28 @@
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="grid md:grid-cols-2 gap-4 md:gap-6">
                     <!-- Link Card 1 -->
-                    <div onclick="switchTab('flash')" class="poe-panel p-4 cursor-pointer hover:border-[#dfcf99] transition-colors group">
+                    <div onclick="switchTab('flash')" class="poe-panel p-4 cursor-pointer hover:border-[#dfcf99] transition-colors group active:bg-[#1c1e26]">
                         <div class="flex items-start gap-4">
                             <div class="bg-[#0e0f12] p-3 border border-[#2d313a]">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#8888ff]" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#8888ff]" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                             </div>
                             <div>
                                 <h3 class="text-[#dfcf99] font-bold text-lg group-hover:text-white mb-1">遊戲啟動方案</h3>
                                 <div class="text-[#7f7f7f] text-xs uppercase mb-2">Runtime Environment</div>
                                 <p class="text-[#a3a3a3] text-sm">
-                                    下載 <span class="text-[#af6025]">FlashPlayer</span>。解決無法載入遊戲、黑屏等問題。
+                                    下載 <span class="text-[#af6025]">FlashPlayer.zip</span>。解決無法載入遊戲、黑屏等問題。
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Link Card 2 -->
-                    <div onclick="switchTab('multi')" class="poe-panel p-4 cursor-pointer hover:border-[#dfcf99] transition-colors group">
+                    <div onclick="switchTab('multi')" class="poe-panel p-4 cursor-pointer hover:border-[#dfcf99] transition-colors group active:bg-[#1c1e26]">
                         <div class="flex items-start gap-4">
                             <div class="bg-[#0e0f12] p-3 border border-[#2d313a]">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#1ba29b]" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#1ba29b]" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
                             </div>
                             <div>
                                 <h3 class="text-[#dfcf99] font-bold text-lg group-hover:text-white mb-1">多開同步工具</h3>
@@ -192,9 +200,9 @@
             </div>
 
             <!-- FLASH SECTION -->
-            <div id="section-flash" class="space-y-8 animate-fade-in hidden">
-                <div class="flex items-center justify-between border-b border-[#2d313a] pb-4">
-                    <h2 class="text-2xl text-[#dfcf99] flex items-center gap-3">
+            <div id="section-flash" class="space-y-6 md:space-y-8 animate-fade-in hidden">
+                <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-[#2d313a] pb-4 gap-2">
+                    <h2 class="text-xl md:text-2xl text-[#dfcf99] flex items-center gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-[#8888ff]" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                         遊戲啟動方案
                     </h2>
@@ -203,16 +211,16 @@
 
                 <!-- Unique Item Box: Download -->
                 <div class="poe-unique-box bg-[#0e0f12] p-1">
-                    <div class="bg-[#0e0f12] p-6 relative">
+                    <div class="bg-[#0e0f12] p-4 md:p-6 relative">
                         <!-- Header Glow -->
                         <div class="absolute top-0 left-0 w-full h-16 poe-unique-header opacity-50 pointer-events-none"></div>
                         
-                        <div class="flex flex-col md:flex-row justify-between items-start mb-6 relative z-10">
+                        <div class="flex flex-col md:flex-row justify-between items-start mb-6 relative z-10 gap-4">
                             <div>
-                                <h3 class="text-[#af6025] text-2xl font-bold font-serif">Flash Player 11.5 獨立版</h3>
+                                <h3 class="text-[#af6025] text-xl md:text-2xl font-bold font-serif">Flash Player 11.5 獨立版</h3>
                                 <p class="text-[#7f7f7f] text-sm mt-1 font-mono">壓縮檔版本 (ZIP Archive)</p>
                             </div>
-                            <a href="flashplayer11-5_sa_win_32.zip" download class="mt-4 md:mt-0 bg-[#af6025] hover:bg-[#c97435] text-black font-bold px-6 py-2 text-sm flex items-center gap-2 transition-colors uppercase tracking-widest clip-path-polygon">
+                            <a href="flashplayer11-5_sa_win_32.zip" download class="w-full md:w-auto text-center mt-2 md:mt-0 bg-[#af6025] hover:bg-[#c97435] active:bg-[#a0501e] text-black font-bold px-6 py-3 md:py-2 text-sm flex items-center justify-center gap-2 transition-colors uppercase tracking-widest clip-path-polygon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                 下載壓縮包
                             </a>
@@ -220,15 +228,15 @@
 
                         <!-- Stats Section -->
                         <div class="grid gap-2 text-sm border-t border-b border-[#af6025] border-opacity-30 py-4 my-4 font-serif">
-                            <div class="flex justify-between items-center px-2 hover:bg-[#1c1e26]">
+                            <div class="flex justify-between items-center px-2 py-1 hover:bg-[#1c1e26]">
                                 <span class="text-[#7f7f7f]">檔案名稱</span>
-                                <span class="text-[#c8c8c8]">flashplayer11-5_sa_win_32.zip</span>
+                                <span class="text-[#c8c8c8] break-all text-right ml-4">flashplayer11-5_sa_win_32.zip</span>
                             </div>
-                            <div class="flex justify-between items-center px-2 hover:bg-[#1c1e26]">
+                            <div class="flex justify-between items-center px-2 py-1 hover:bg-[#1c1e26]">
                                 <span class="text-[#7f7f7f]">安裝方式</span>
                                 <span class="text-[#8888ff]">解壓縮後直接執行</span>
                             </div>
-                            <div class="flex justify-between items-center px-2 hover:bg-[#1c1e26]">
+                            <div class="flex justify-between items-center px-2 py-1 hover:bg-[#1c1e26]">
                                 <span class="text-[#7f7f7f]">狀態</span>
                                 <span class="text-[#c8c8c8]">已封裝，避免下載損毀</span>
                             </div>
@@ -239,7 +247,12 @@
                             <p>內含 <span class="text-white">flashplayer11-5_sa_win_32.exe</span></p>
                             <p>解決「此應用程式無法在您的電腦上執行」錯誤</p>
                             <p>解決瀏覽器阻擋 .exe 下載問題</p>
-                            <p class="text-[#a3a3a3] italic mt-4">使用說明：<br>1. 下載並解壓縮 ZIP 檔。<br>2. 執行資料夾內的 exe 檔案。<br>3. 在「檔案」>「開啟」中輸入遊戲網址。</p>
+                            <div class="text-[#a3a3a3] italic mt-4 bg-[#181a21] p-3 rounded border border-[#2d313a]">
+                                <strong>使用說明：</strong><br>
+                                1. 下載並解壓縮 ZIP 檔。<br>
+                                2. 執行資料夾內的 exe 檔案。<br>
+                                3. 在「檔案」>「開啟」中輸入遊戲網址。
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -248,23 +261,23 @@
                 <div class="poe-panel p-4 mt-8">
                     <h3 class="text-[#c8c8c8] font-bold mb-4 border-l-4 border-[#8888ff] pl-3">替代方案列表 (Alternative Solutions)</h3>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-sm text-left border-collapse">
+                        <table class="w-full text-sm text-left border-collapse min-w-[300px]">
                             <thead class="text-[#7f7f7f] bg-[#0e0f12] uppercase font-mono text-xs border-b border-[#2d313a]">
                                 <tr>
-                                    <th class="px-4 py-3">工具名稱</th>
-                                    <th class="px-4 py-3">類型</th>
-                                    <th class="px-4 py-3">特色</th>
+                                    <th class="px-4 py-3 whitespace-nowrap">工具名稱</th>
+                                    <th class="px-4 py-3 whitespace-nowrap">類型</th>
+                                    <th class="px-4 py-3 whitespace-nowrap">特色</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-[#2d313a]">
                                 <tr class="bg-[#181a21] hover:bg-[#1c1e26]">
-                                    <td class="px-4 py-3 text-[#dfcf99] font-bold">Flash Center</td>
-                                    <td class="px-4 py-3 text-[#a3a3a3]">瀏覽器插件</td>
+                                    <td class="px-4 py-3 text-[#dfcf99] font-bold whitespace-nowrap">Flash Center</td>
+                                    <td class="px-4 py-3 text-[#a3a3a3] whitespace-nowrap">瀏覽器插件</td>
                                     <td class="px-4 py-3"><span class="text-[#d84a4a]">廣告出現率增加 (20-50%)</span></td>
                                 </tr>
                                 <tr class="bg-[#181a21] hover:bg-[#1c1e26]">
-                                    <td class="px-4 py-3 text-[#dfcf99] font-bold">Cent Browser 4.3</td>
-                                    <td class="px-4 py-3 text-[#a3a3a3]">舊版核心</td>
+                                    <td class="px-4 py-3 text-[#dfcf99] font-bold whitespace-nowrap">Cent Browser</td>
+                                    <td class="px-4 py-3 text-[#a3a3a3] whitespace-nowrap">舊版核心</td>
                                     <td class="px-4 py-3"><span class="text-[#8888ff]">純淨度高，無廣告</span></td>
                                 </tr>
                             </tbody>
@@ -272,11 +285,11 @@
                     </div>
                 </div>
 
-                <!-- Advanced Tutorial: Manual Multiboxing -->
-                <div class="poe-panel p-6 mt-8">
+                <!-- General Tutorial: Manual Multiboxing -->
+                <div class="poe-panel p-4 md:p-6 mt-8">
                     <h3 class="text-[#dfcf99] font-bold mb-6 border-b border-[#2d313a] pb-2 font-serif flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                        進階教學：手動多開與捷徑設定
+                        通用教學：手動多開與捷徑設定
                     </h3>
                     
                     <div class="space-y-6 text-sm font-serif">
@@ -286,7 +299,7 @@
                              <div>
                                  <h4 class="text-[#dfcf99] font-bold mb-1">建立捷徑 (Create Shortcut)</h4>
                                  <p class="text-[#a3a3a3]">
-                                    右鍵點選解壓縮後的 <span class="text-white">flashplayer11-5_sa_win_32.exe</span>，選擇「傳送到」>「桌面 (建立捷徑)」。
+                                    右鍵點選解壓縮後的 <span class="text-white">flashplayer...exe</span>，選擇「傳送到」>「桌面 (建立捷徑)」。
                                  </p>
                              </div>
                         </div>
@@ -297,10 +310,10 @@
                              <div>
                                  <h4 class="text-[#dfcf99] font-bold mb-1">設定基礎路徑 (Set Base Target)</h4>
                                  <p class="text-[#a3a3a3] mb-2">
-                                    右鍵點擊桌面剛建立的捷徑，選擇「內容」。在「目標」欄位的最後面，<span class="text-[#d84a4a]">先空一格</span>，然後貼上以下網址：
+                                    右鍵捷徑 >「內容」。在「目標」欄位最後面<span class="text-[#d84a4a]">空一格</span>，貼上：
                                  </p>
-                                 <code class="block bg-[#0e0f12] p-2 border border-[#2d313a] text-[#8888ff] break-all">https://tw1mc.funmily.com/s/s7/GameLoader.swf?</code>
-                                 <p class="text-[#a3a3a3] text-xs mt-1 italic">* 注意：Windows 11 使用者請務必確認路徑與網址中間有空格。此時請勿關閉視窗。</p>
+                                 <code class="block bg-[#0e0f12] p-2 border border-[#2d313a] text-[#8888ff] break-all text-xs">https://tw1mc.funmily.com/s/s7/GameLoader.swf?</code>
+                                 <p class="text-[#a3a3a3] text-xs mt-1 italic">* Windows 11 請務必確認有空格。</p>
                              </div>
                         </div>
                 
@@ -310,11 +323,10 @@
                              <div>
                                  <h4 class="text-[#dfcf99] font-bold mb-1">獲取登入參數 (Get User Session)</h4>
                                  <ul class="list-disc list-inside text-[#a3a3a3] space-y-1">
-                                    <li>前往魔力學堂官方網頁登錄帳號，點選您的角色伺服器進入。</li>
-                                    <li>此時畫面會是灰色的 (因為已不支援 Flash)。</li>
-                                    <li>在灰色/黑色畫面上按右鍵，選擇<span class="text-white">「檢視網頁原始碼」</span>。</li>
-                                    <li>找到第 <span class="text-[#af6025]">41</span> 行左右。</li>
-                                    <li>找到 <span class="text-[#1ba29b]">user=</span> 開頭的字串，複製直到 <span class="text-[#1ba29b]">' +</span> 之前結束。</li>
+                                    <li>前往官方網頁登錄帳號並進入伺服器。</li>
+                                    <li>在灰色畫面按右鍵 > <span class="text-white">「檢視網頁原始碼」</span>。</li>
+                                    <li>找到第 <span class="text-[#af6025]">41</span> 行左右的 <span class="text-[#1ba29b]">user=</span> 字串。</li>
+                                    <li>複製直到 <span class="text-[#1ba29b]">' +</span> 之前結束。</li>
                                  </ul>
                              </div>
                         </div>
@@ -325,14 +337,11 @@
                              <div>
                                  <h4 class="text-[#dfcf99] font-bold mb-1">完成設定 (Finalize)</h4>
                                  <p class="text-[#a3a3a3]">
-                                    回到捷徑內容視窗，將剛剛複製的代碼貼在 <code class="text-[#8888ff]">GameLoader.swf?</code> 的後面。
+                                    回到捷徑內容，將代碼貼在 <code class="text-[#8888ff]">GameLoader.swf?</code> 後面。
                                  </p>
                                  <div class="mt-2 p-2 bg-[#2d313a]/30 border border-[#2d313a] text-xs text-[#a3a3a3] break-all">
-                                    範例：...flashplayer.exe" https://tw1mc.funmily.com/s/s7/GameLoader.swf?<span class="text-[#1ba29b]">user=12345...&key=...</span>
+                                    範例：...exe" https://...GameLoader.swf?<span class="text-[#1ba29b]">user=123...</span>
                                  </div>
-                                 <p class="text-[#a3a3a3] mt-2">
-                                    按下確定後，直接執行捷徑即可登入。如需多開，請重複上述步驟建立新的捷徑。
-                                 </p>
                              </div>
                         </div>
                     </div>
@@ -340,9 +349,9 @@
             </div>
 
             <!-- MULTI SECTION -->
-            <div id="section-multi" class="space-y-8 animate-fade-in hidden">
-                <div class="flex items-center justify-between border-b border-[#2d313a] pb-4">
-                    <h2 class="text-2xl text-[#dfcf99] flex items-center gap-3">
+            <div id="section-multi" class="space-y-6 md:space-y-8 animate-fade-in hidden">
+                <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-[#2d313a] pb-4 gap-2">
+                    <h2 class="text-xl md:text-2xl text-[#dfcf99] flex items-center gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-[#1ba29b]" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
                         多開同步工具
                     </h2>
@@ -351,10 +360,10 @@
 
                 <div class="grid grid-cols-1 gap-6">
                     <!-- Main Gem: OpenMultiboxing -->
-                    <div class="poe-gem-box bg-[#0e0f12] p-6 relative">
+                    <div class="poe-gem-box bg-[#0e0f12] p-4 md:p-6 relative">
                         <!-- Gem Header -->
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="bg-[#1ba29b]/10 p-3 rounded border border-[#1ba29b] shadow-[0_0_15px_rgba(27,162,155,0.3)]">
+                        <div class="flex flex-col md:flex-row md:items-center gap-4 mb-6">
+                            <div class="bg-[#1ba29b]/10 p-3 rounded border border-[#1ba29b] shadow-[0_0_15px_rgba(27,162,155,0.3)] w-16 h-16 flex items-center justify-center flex-shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="text-[#1ba29b]" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
                             </div>
                             <div>
@@ -372,22 +381,22 @@
                                 <h4 class="text-[#c8c8c8] text-xs font-bold mb-3 uppercase tracking-widest border-b border-[#2d313a] pb-1">功能說明 (Features)</h4>
                                 <ul class="space-y-2 list-none">
                                     <li class="text-[#8888ff] flex items-center gap-2">
-                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full"></span>
+                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full flex-shrink-0"></span>
                                         視窗自動吸附與排列 (Window Layout)
                                     </li>
                                     <li class="text-[#8888ff] flex items-center gap-2">
-                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full"></span>
+                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full flex-shrink-0"></span>
                                         支援全域按鍵廣播 (Key Broadcasting)
                                     </li>
                                     <li class="text-[#8888ff] flex items-center gap-2">
-                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full"></span>
+                                        <span class="w-1 h-1 bg-[#8888ff] rounded-full flex-shrink-0"></span>
                                         畫中畫預覽模式 (PiP Preview)
                                     </li>
                                 </ul>
                             </div>
 
                             <div class="mt-6">
-                                <a href="OpenMultiboxing.zip" download class="inline-flex items-center gap-2 text-[#0e0f12] bg-[#1ba29b] border border-[#1ba29b] px-6 py-2 hover:bg-[#2bc4bc] transition-colors font-bold text-xs uppercase tracking-widest">
+                                <a href="OpenMultiboxing.zip" download class="w-full md:w-auto text-center inline-flex items-center justify-center gap-2 text-[#0e0f12] bg-[#1ba29b] border border-[#1ba29b] px-6 py-3 md:py-2 hover:bg-[#2bc4bc] transition-colors font-bold text-xs uppercase tracking-widest">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                     下載 ZIP 檔案
                                 </a>
@@ -414,23 +423,40 @@
             document.querySelectorAll('.nav-item').forEach(el => {
                 el.classList.remove('active');
                 el.classList.remove('bg-[#23262e]');
+                el.classList.remove('border-[#dfcf99]');
+                el.classList.add('border-transparent');
+                
+                // Text color reset
                 el.classList.remove('text-[#dfcf99]');
                 el.classList.add('text-[#7f7f7f]');
                 el.classList.add('hover:text-[#c8c8c8]');
-                // Reset SVG color
+                
+                // SVG color reset
                 const svg = el.querySelector('svg');
-                if(svg) svg.classList.remove('text-[#dfcf99]');
+                if(svg) {
+                    svg.classList.remove('text-[#dfcf99]');
+                    // Keep original SVG color if it had one, or let it inherit text color
+                }
             });
 
             // Activate selected nav item
             const activeNav = document.getElementById('nav-' + tabId);
             activeNav.classList.add('active');
+            activeNav.classList.remove('border-transparent');
+            activeNav.classList.add('border-[#dfcf99]'); // For mobile border
+            
             activeNav.classList.remove('text-[#7f7f7f]');
             activeNav.classList.remove('hover:text-[#c8c8c8]');
+            // Text color logic handled by CSS active class, but we can enforce if needed
             
             // Set SVG color
             const activeSvg = activeNav.querySelector('svg');
             if(activeSvg) activeSvg.classList.add('text-[#dfcf99]');
+            
+            // Scroll to top on mobile when switching tabs
+            if (window.innerWidth < 768) {
+                window.scrollTo(0, 0);
+            }
         }
     </script>
 </body>
